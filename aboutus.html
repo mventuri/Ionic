@@ -1,0 +1,58 @@
+<!doctype html>
+<title>Conversion calculators</title>
+
+<style>
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+input {
+  width: 50px;
+}
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+}
+</style>
+
+<h1>Conversion Calculators</h1>
+
+<h2>Weight</h2>
+<label for="poundsInput">Pounds</label><input id="poundsInput"><br>
+<label for="kilogramsInput">Kilograms</label><input id="kilogramsInput"><br>
+
+<h2>Temperature</h2>
+<label for="cInput">Celsius</label><input id="cInput"><br>
+<label for="fInput">Fahrenheit</label><input id="fInput"><br>
+
+<script>
+function updateC() {
+  var c = (fInput.value - 32) / 1.8;
+  cInput.value = c.toFixed(1);
+}
+
+function updateF() {
+  var f = cInput.value * 1.8 + 32;
+  fInput.value = f.toFixed(1);
+}
+
+fInput.oninput = updateC;
+cInput.oninput = updateF;
+
+function updatePounds() {
+  poundsInput.value = (kilogramsInput.value * 2.20462).toFixed(1);
+}
+
+function updateKilograms() {
+  kilogramsInput.value = (poundsInput.value / 2.20462).toFixed(1);
+}
+
+kilogramsInput.oninput = updatePounds;
+poundsInput.oninput = updateKilograms;
+</script>
